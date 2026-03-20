@@ -3,7 +3,6 @@ import Booking from "../models/Booking.js";
 import User from "../models/User.js";
 import sendBookingEmail from "../utils/sendEmail.js";
 
-//  CREATE BOOKING + SEND EMAIL
 export const createBooking = async (req, res) => {
   try {
     const { serviceName, servicePrice, contact, notes } = req.body;
@@ -27,7 +26,6 @@ export const createBooking = async (req, res) => {
       notes,
     });
 
-    //  SEND EMAIL
     await sendBookingEmail({
       to: user.email,
       name: user.name,
@@ -57,7 +55,6 @@ export const getMyBookings = async (req, res) => {
   }
 };
 
-//  DELETE BOOKING
 export const deleteBooking = async (req, res) => {
   try {
     const booking = await Booking.findById(req.params.id);
